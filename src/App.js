@@ -70,7 +70,7 @@ class App extends Component {
     ));
 
     return (
-      <>
+      <div>
         <div className="App">
           {this.state.editing === false ? (
             <form onSubmit={this.onAddTask}>
@@ -95,7 +95,7 @@ class App extends Component {
 
           <ul className="todo_wrapper">{mylist}</ul>
         </div>
-      </>
+      </div>
     );
   }
 }
