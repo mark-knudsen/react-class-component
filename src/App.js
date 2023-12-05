@@ -1,6 +1,15 @@
 import "./App.css";
 import React, { Component } from "react";
 
+/*
+  According to: https://react.dev/reference/react/Component#adding-state-to-a-class-component
+  1) "The state of a class component is available as this.state. 
+  The state field must be an object. Do not mutate the state directly. 
+  If you wish to change the state, call setState with the new state." 
+
+  2) "Defining state in class components is equivalent to calling useState in function components."
+*/
+
 class App extends Component {
   constructor() {
     super();
