@@ -21,9 +21,7 @@ class App extends Component {
       currentValue: "",   // added for Edit a To-do Task
     };
   }
-  onChange = (e) => {
-    this.setState({ value: e.target.value });
-  };
+
   onAddTask = (e) => {
     e.preventDefault();
 
@@ -35,6 +33,10 @@ class App extends Component {
       this.setState({ todos: this.state.todos.concat(obj) });
       this.setState({ value: "" });
     }
+  };
+
+  onChange = (e) => {
+    this.setState({ value: e.target.value });
   };
 
   onDeleteTask = (itemId) => {
