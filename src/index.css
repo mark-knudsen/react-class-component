@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content:center;
+  text-align: center;
+  color: black;
+  padding-top: 4rem;
+}
+
+.todo_wrapper{  
+  margin-right: 7rem;
+  font-size: 1rem;
+  color:  #585858;
+  list-style: none;
+
+}
+.todo_item{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+}
+.todo_item > button{
+  margin:0 5px;
+}
+.remove{
+  background-color: darkred;
+  color: whitesmoke;
+  border-radius:8%;
+  border: #585858;
+}
+.edit{
+
+  background-color:blueviolet;
+  color: whitesmoke;
+  border-radius:8%;
+  border: #585858;
+}
+
+button{
+  margin-left: 20px;
+}

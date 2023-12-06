@@ -73,37 +73,35 @@ class App extends Component {
       <li className="todo_item">
         {todo.name}
 
-        <button onClick={() => this.onToggleEdit(todo)}>Edit</button>
-        <button onClick={() => this.onDeleteTask(todo.id)}>Remove</button>
+        <button className="edit" onClick={() => this.onToggleEdit(todo)}>Edit</button>
+        <button className="remove" onClick={() => this.onDeleteTask(todo.id)}>Remove</button>
       </li>
     ));
 
     return (
-      <div>
-        <div className="App">
-          {this.state.editing === false ? (
-            <form onSubmit={this.onAddTask}>
-              <input
-                placeholder="typeyour task"
-                value={this.state.value}
-                onChange={this.onChange}
-              />
-              <button onClick={this.onAddTask}>Add Item</button>
-            </form>
-          ) : (
-            <form onSubmit={this.onSubmitEditTodo}>
-              <input
-                placeholder="edit your task"
-                value={this.state.currentValue}
-                name={this.state.currentValue}
-                onChange={this.onEditInputChange}
-              />
-              <button onClick={this.onSubmitEditTodo}>Update Item</button>
-            </form>
-          )}
+      <div className="App">
+        {this.state.editing === false ? (
+          <form onSubmit={this.onAddTask}>
+            <input
+              placeholder="typeyour task"
+              value={this.state.value}
+              onChange={this.onChange}
+            />
+            <button onClick={this.onAddTask}>Add Item</button>
+          </form>
+        ) : (
+          <form onSubmit={this.onSubmitEditTodo}>
+            <input
+              placeholder="edit your task"
+              value={this.state.currentValue}
+              name={this.state.currentValue}
+              onChange={this.onEditInputChange}
+            />
+            <button onClick={this.onSubmitEditTodo}>Update Item</button>
+          </form>
+        )}
 
-          <ul className="todo_wrapper">{mylist}</ul>
-        </div>
+        <ul className="todo_wrapper">{mylist}</ul>
       </div>
     );
   }
