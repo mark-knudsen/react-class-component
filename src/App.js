@@ -85,11 +85,11 @@ class App extends Component {
         {this.state.editing === false ? (
           <form onSubmit={this.onAddTask}>
             <input
-              placeholder="typeyour task"
+              placeholder="Type your task"
               value={this.state.value}
               onChange={this.onChange}
             />
-            <button onClick={this.onAddTask}>Add Item</button>
+            <button onClick={this.onAddTask}>Add ToDo</button>
           </form>
         ) : (
           <form onSubmit={this.onSubmitEditTodo}>
@@ -99,7 +99,7 @@ class App extends Component {
               name={this.state.currentValue}
               onChange={this.onEditInputChange}
             />
-            <button onClick={this.onSubmitEditTodo}>Update Item</button>
+            <button onClick={this.onSubmitEditTodo}>Update ToDo</button>
           </form>
         )}
 
