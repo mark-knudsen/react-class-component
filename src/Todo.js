@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { Component } from "react";
+import MyList from "./MyList";
 
 class Todo extends Component {
   constructor() {
@@ -12,6 +13,32 @@ class Todo extends Component {
       currentValue: "",
     };
   }
+
+  // Added Lifecycle methods from line 17-34 - NEW
+  componentDidMount() {
+    console.log("Todo mounted");
+
+    // Simulating an event listener setup
+    window.addEventListener("resize", this.handleResize);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    // This lifecycle method is called whenever the component updates.
+    // You can compare the current props and state with the previous ones.
+    // It's a good place to perform side effects when props or state change.
+    // considered unsafe for asynchronous updates!
+    console.log("Todo is updated");
+  }
+
+  componentWillUnmount() {
+    console.log("Component will unmount");
+
+    // Simulating cleanup or removing event listeners
+    window.removeEventListener("resize", this.handleResize);
+  }
+
+  handleResize = () => {
+    console.log("Window resized");
+  };
 
   onAddTask = (e) => {
     e.preventDefault();
@@ -37,12 +64,23 @@ class Todo extends Component {
   };
 
   onEditTodo = (id, newValue) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, name: newValue }; // Return the updated todo
+        }
+        return todo; // Return unchanged todos
+      }),
+    }));
+  };
+/*   onEditTodo = (id, newValue) => {
     this.state.todos.map((todo) => {
       if (todo.id === id) {
         todo.name = newValue;
       }
     });
-  };
+  }; */
+  
 
   onSubmitEditTodo = (e) => {
     e.preventDefault();
@@ -62,15 +100,6 @@ class Todo extends Component {
   };
 
   render() {
-    const mylist = this.state.todos.map((todo) => (
-      <li className="todo_item">
-        {todo.name}
-
-        <button className="edit" onClick={() => this.onToggleEdit(todo)}>Edit</button>
-        <button className="remove" onClick={() => this.onDeleteTask(todo.id)}>Remove</button>
-      </li>
-    ));
-
     return (
       <div className="App">
         {this.state.editing === false ? (
@@ -94,7 +123,8 @@ class Todo extends Component {
           </form>
         )}
 
-        <ul className="todo_wrapper">{mylist}</ul>
+        {/* Render MyList component passing necessary props */}
+        <MyList todos={this.state.todos} onToggleEdit={this.onToggleEdit} onDeleteTask={this.onDeleteTask} />
       </div>
     );
   }
